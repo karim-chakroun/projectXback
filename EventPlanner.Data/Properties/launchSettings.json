@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Aladin.Data": {
+      "commandName": "Project"
+    },
+    "Profil 1": {
+      "commandName": "Executable",
+      "executablePath": "D:\\PFE 2023\\Event Planner\\Backend\\EventPlanner\\Aladin.WEBAPI\\Aladin.WEBAPI.csproj.user"
+    }
+  }
+}
