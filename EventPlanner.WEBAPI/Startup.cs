@@ -3,6 +3,8 @@ using Aladin.Data.Configuration;
 using Aladin.Data.Infrastructures;
 using Aladin.Domain.Models;
 using Aladin.Service;
+using Aladin.Service.Interfaces;
+using Aladin.Service.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -27,6 +29,7 @@ namespace Aladin.WEBAPI
             services.AddScoped<IDatabaseFactory, DataBaseFactory>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             //injection des services spécifiques
+            services.AddScoped<IExempleService, ExempleService>();
             //Inject AppSettings
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
             services.AddDbContext<AppPlanningContext>();

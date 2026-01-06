@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\EventPlanner.Data\Aladin.Data.csproj" />
     <ProjectReference Include="..\EventPlanner.Domain\Aladin.Domain.csproj" />
+    <ProjectReference Include="..\Service.Pattern\Service.Pattern.csproj" />
   </ItemGroup>
 
 </Project>
