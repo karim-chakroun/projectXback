@@ -30,6 +30,8 @@ namespace Aladin.WEBAPI
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             //injection des services spécifiques
             services.AddScoped<IExempleService, ExempleService>();
+            services.AddScoped<ICarService, CarService>();
+            services.AddScoped<IDemandeService, DemandeService>();
             //Inject AppSettings
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
             services.AddDbContext<AppPlanningContext>();

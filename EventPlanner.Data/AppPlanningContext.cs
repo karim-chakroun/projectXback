@@ -17,15 +17,10 @@ namespace Aladin.Data
 
         }
 
-        public DbSet<ExternServices> ExternServices { get; set; }
         public DbSet<Exemple> Exemples { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        public DbSet<Events> Events { get; set; }
-        public DbSet<Services> Services { get; set; }
-        public DbSet<Notification> Notification { get; set; }
-        public DbSet<Feedback> Feedback { get; set; }
-        public DbSet<Messages> Messages { get; set; }
-        public DbSet<Message> Message { get; set; }
+        public DbSet<Demande> Demande { get; set; }
+        public DbSet<Car> Car { get; set; }
 
         //public DbSet<Exemple> Exemples { get; set; }
 

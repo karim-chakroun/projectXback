@@ -42,274 +42,104 @@ namespace Aladin.Data.Migrations
                     b.ToTable("Exemples");
                 });
 
-            modelBuilder.Entity("Aladin.Domain.Models.Events", b =>
+            modelBuilder.Entity("Aladin.Domain.Models.Car", b =>
                 {
-                    b.Property<Guid>("IdEvent")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Adresse")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("Cout")
-                        .HasColumnType("real");
-
-                    b.Property<DateTime>("DateDebut")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateFin")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EventName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("StepsDone")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdEvent");
-
-                    b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.ExternServices", b =>
-                {
-                    b.Property<Guid>("IdExternServices")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("EventFk")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int?>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<bool>("avalable")
-                        .HasColumnType("bit");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("lien")
+                    b.Property<string>("Brand")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float?>("prix")
-                        .HasColumnType("real");
-
-                    b.Property<string>("provider")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("serviceName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdExternServices");
-
-                    b.HasIndex("EventFk");
-
-                    b.ToTable("ExternServices");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.Feedback", b =>
-                {
-                    b.Property<Guid>("IdFeedback")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DatePost")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("DownPayment")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Fullname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IdPoster")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IdReceiver")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdFeedback");
-
-                    b.HasIndex("IdReceiver");
-
-                    b.ToTable("Feedback");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.Message", b =>
-                {
-                    b.Property<Guid>("IdMessage")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Contenu")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DateMessage")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("IdMessages")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("SenderId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdMessage");
-
-                    b.HasIndex("IdMessages");
-
-                    b.ToTable("Message");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.Messages", b =>
-                {
-                    b.Property<Guid>("MessageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ReceiverId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ReceiverName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SenderId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SenderName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("TimeSent")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("MessageId");
-
-                    b.HasIndex("ReceiverId");
-
-                    b.ToTable("Messages");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.Notification", b =>
-                {
-                    b.Property<Guid>("IdNotification")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool?>("Closed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateNotif")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("EventFk")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("IdProvider")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("IdRequester")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Quantity")
+                    b.Property<int>("DurationMonths")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("ServiceFk")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("State")
+                    b.Property<string>("FuelType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserFk")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("IdNotification");
-
-                    b.HasIndex("EventFk");
-
-                    b.HasIndex("ServiceFk");
-
-                    b.HasIndex("UserFk");
-
-                    b.ToTable("Notification");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.Participation", b =>
-                {
-                    b.Property<Guid>("IdParticipation")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("IdEvent")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("IdUser")
+                    b.Property<string>("Gearbox")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Image")
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IdParticipation");
-
-                    b.HasIndex("IdEvent");
-
-                    b.ToTable("Participation");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.Services", b =>
-                {
-                    b.Property<Guid>("IdService")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Avalable")
+                    b.Property<bool>("IsAvailable")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("MonthlyPayment")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<float>("Prix")
-                        .HasColumnType("real");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("Promotion")
+                    b.Property<int>("Year")
                         .HasColumnType("int");
 
-                    b.Property<string>("ServiceName")
+                    b.HasKey("Id");
+
+                    b.ToTable("Car");
+                });
+
+            modelBuilder.Entity("Aladin.Domain.Models.Demande", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AutreRevenu")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Type")
+                    b.Property<string>("AvanceDispo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Metier")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Video")
+                    b.Property<string>("Nom")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdService");
+                    b.Property<bool>("Patente")
+                        .HasColumnType("bit");
 
-                    b.ToTable("Services");
+                    b.Property<string>("Region")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RetenuParMois")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RevenuMoyen")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Salaire")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telephone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TerreAgricole")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarId");
+
+                    b.ToTable("Demande");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -544,78 +374,15 @@ namespace Aladin.Data.Migrations
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
 
-            modelBuilder.Entity("Aladin.Domain.Models.ExternServices", b =>
+            modelBuilder.Entity("Aladin.Domain.Models.Demande", b =>
                 {
-                    b.HasOne("Aladin.Domain.Models.Events", "Event")
-                        .WithMany("ExternServices")
-                        .HasForeignKey("EventFk")
+                    b.HasOne("Aladin.Domain.Models.Car", "Car")
+                        .WithMany("Demandes")
+                        .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Event");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.Feedback", b =>
-                {
-                    b.HasOne("Aladin.Domain.Models.ApplicationUser", "Receiver")
-                        .WithMany("Feedbacks")
-                        .HasForeignKey("IdReceiver")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Receiver");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.Message", b =>
-                {
-                    b.HasOne("Aladin.Domain.Models.Messages", "Messages")
-                        .WithMany("Message")
-                        .HasForeignKey("IdMessages");
-
-                    b.Navigation("Messages");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.Messages", b =>
-                {
-                    b.HasOne("Aladin.Domain.Models.ApplicationUser", "Receiver")
-                        .WithMany("Messages")
-                        .HasForeignKey("ReceiverId");
-
-                    b.Navigation("Receiver");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.Notification", b =>
-                {
-                    b.HasOne("Aladin.Domain.Models.Events", "Event")
-                        .WithMany("Notifications")
-                        .HasForeignKey("EventFk")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Aladin.Domain.Models.Services", "Service")
-                        .WithMany("Notifications")
-                        .HasForeignKey("ServiceFk")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Aladin.Domain.Models.ApplicationUser", "User")
-                        .WithMany("Notifications")
-                        .HasForeignKey("UserFk");
-
-                    b.Navigation("Event");
-
-                    b.Navigation("Service");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.Participation", b =>
-                {
-                    b.HasOne("Aladin.Domain.Models.Events", "Event")
-                        .WithMany("Participation")
-                        .HasForeignKey("IdEvent");
-
-                    b.Navigation("Event");
+                    b.Navigation("Car");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -669,32 +436,9 @@ namespace Aladin.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Aladin.Domain.Models.Events", b =>
+            modelBuilder.Entity("Aladin.Domain.Models.Car", b =>
                 {
-                    b.Navigation("ExternServices");
-
-                    b.Navigation("Notifications");
-
-                    b.Navigation("Participation");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.Messages", b =>
-                {
-                    b.Navigation("Message");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.Services", b =>
-                {
-                    b.Navigation("Notifications");
-                });
-
-            modelBuilder.Entity("Aladin.Domain.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("Feedbacks");
-
-                    b.Navigation("Messages");
-
-                    b.Navigation("Notifications");
+                    b.Navigation("Demandes");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,11 +1,9 @@
 ﻿using Aladin.Data;
 using Aladin.Domain.Models;
-using Aladin.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace Aladin.WEBAPI.Controllers
 {
@@ -40,19 +38,6 @@ namespace Aladin.WEBAPI.Controllers
                 user.birthday,
                 user.PhoneNumber,
                 user.Image,
-                Feedbacks = user.Feedbacks.Select(f => new Feedback
-                {
-                    IdFeedback = f.IdFeedback,
-                    DatePost = f.DatePost,
-                    IdPoster = f.IdPoster,
-                    Description = f.Description,
-                    IdReceiver = f.IdReceiver,
-                    
-
-
-
-
-                }).ToList(),
                 userRole
 
             };
@@ -82,21 +67,6 @@ namespace Aladin.WEBAPI.Controllers
                 user.Adresse,
                 user.PhoneNumber,
                 user.Image,
-                Feedbacks = user.Feedbacks.Select(f => new Feedback
-                {
-                    IdFeedback = f.IdFeedback,
-                    DatePost = f.DatePost,
-                    IdPoster = f.IdPoster,
-                    Description = f.Description,
-                    IdReceiver = f.IdReceiver,
-                    Fullname= f.Fullname,
-                    Image= f.Image,
-
-
-
-
-
-                }).ToList(),
                 userRole
             };
 
@@ -196,9 +166,9 @@ namespace Aladin.WEBAPI.Controllers
             }
             // Update the user's profile properties
             user.FullName = model.FullName;
-            user.Email=model.Email;
+            user.Email = model.Email;
             user.UserName = model.UserName;
-            user.AboutMe=model.AboutMe;
+            user.AboutMe = model.AboutMe;
             user.birthday = model.birthday;
             user.PhoneNumber = model.PhoneNumber;
             user.Adresse = model.Adresse;
