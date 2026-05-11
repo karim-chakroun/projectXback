@@ -15,11 +15,13 @@ namespace Aladin.Domain.Models
         public bool TerreAgricole { get; set; }
         public string? RetenuParMois { get; set; }
         public string? AutreRevenu { get; set; } = "no";
+        public string? AvanceDispo { get; set; }
+        public RequestStatus Status { get; set; } = RequestStatus.Pending;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         // 🔗 Foreign Key
         [ForeignKey(nameof(Car))]
         public int CarId { get; set; }
 
         public virtual Car Car { get; set; }
-        public string? AvanceDispo { get; set; }
     }
 }

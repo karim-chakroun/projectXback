@@ -108,6 +108,9 @@ namespace Aladin.Data.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Metier")
                         .HasColumnType("nvarchar(max)");
 
@@ -128,6 +131,9 @@ namespace Aladin.Data.Migrations
 
                     b.Property<string>("Salaire")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Telephone")
                         .HasColumnType("nvarchar(max)");
